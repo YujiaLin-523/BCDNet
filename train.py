@@ -27,14 +27,16 @@ train_set, val_set, test_set = data_loader.split(dataset)
 # Define the main function
 def main(epochs, optimizer_type, lr, scheduler_type, model_type):
     # Create the TrainLoader and ValLoader
-    train_loader = TrainLoader(train_set, batch_size=128, shuffle=True, num_workers=16)
-    val_loader = ValLoader(val_set, batch_size=128, shuffle=False, num_workers=16)
+    train_loader = TrainLoader(train_set, batch_size=128, shuffle=True, num_workers=4)
+    val_loader = ValLoader(val_set, batch_size=128, shuffle=False, num_workers=4)
 
     # Create the model
     if model_type == 'BCDNet':
         net = BCDNet.model
     elif model_type == 'resnet':
         net = resnet.model
+    if torch.cuda.device_count() > 1:
+        net = torch.nn.DataParallel(net)
     net.to(device)
     params = net.parameters()
 
