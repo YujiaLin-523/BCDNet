@@ -1,8 +1,9 @@
 from matplotlib import pyplot as plt
+from models import BCDNet, resnet
 
 
 # Plot the loss and accuracy values
-def plot_loss_accuracy(loss_values, acc_values):
+def plot_loss_accuracy(loss_values, acc_values, model_type):
     plt.figure(figsize=(12, 4))
     plt.subplot(1, 2, 1)
     plt.plot(loss_values, label='Validation Loss')
@@ -17,4 +18,7 @@ def plot_loss_accuracy(loss_values, acc_values):
     plt.legend()
 
     # Save the figure to the logs folder
-    plt.savefig('logs/loss_acc_plot.png')
+    if model_type == 'BCDNet':
+        plt.savefig('logs/BCDNet.png')
+    elif model_type == 'resnet':
+        plt.savefig('logs/resnet.png')
