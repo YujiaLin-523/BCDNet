@@ -113,7 +113,7 @@ def main(epochs, optimizer_type, lr, scheduler_type, model_type):
                 torch.save(net.state_dict(), os.path.join('checkpoints', 'best_model.pth'))
 
     # Plot the loss and accuracy values
-    plot_loss_accuracy(loss_values, acc_values)
+    plot_loss_accuracy(loss_values, acc_values, model_type)
 
 
 # Call the main function
