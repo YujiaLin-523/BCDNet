@@ -110,7 +110,7 @@ def main(epochs, optimizer_type, lr, scheduler_type, model_type):
             # Save the best model
             if accuracy > best_acc:
                 best_acc = accuracy
-                torch.save(net.state_dict(), os.path.join('checkpoints', 'best_model.pth'))
+                torch.save(net.state_dict(), os.path.join('checkpoints', f'{model_type}.pth'))
 
     # Plot the loss and accuracy values
     plot_loss_accuracy(loss_values, acc_values, model_type)
