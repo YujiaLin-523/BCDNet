@@ -35,9 +35,11 @@ def main(epochs, optimizer_type, lr, scheduler_type, model_type):
         net = BCDNet.model
     elif model_type == 'resnet':
         net = resnet.model
+
+    net.to(device)
     if torch.cuda.device_count() > 1:
         net = torch.nn.DataParallel(net)
-    net.to(device)
+
     params = net.parameters()
 
     # Create the optimizer

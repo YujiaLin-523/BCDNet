@@ -50,6 +50,7 @@ class BCDNet(nn.Module):
         x = self.classifier(x)
         return x
 
+
 model = BCDNet()
 
 # test_net = BCDNet()
