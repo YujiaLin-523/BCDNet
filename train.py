@@ -23,6 +23,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 dataset = BCDDataset('./data', data_loader.transformation)
 train_set, val_set, test_set = data_loader.split(dataset)
 
+# Create the checkpoints path
+os.makedirs('./checkpoints', exist_ok=True)
 
 # Define the main function
 def main(epochs, optimizer_type, lr, scheduler_type, model_type):
