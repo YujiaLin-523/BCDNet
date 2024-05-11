@@ -31,7 +31,7 @@ class BCDNet(nn.Module):
 
         self.classifier = nn.Sequential(
             nn.Dropout(0.5),
-            nn.Linear(1 * 256 * 3 * 3, 1024),
+            nn.Linear(1 * 256 * 4 * 4, 1024),
             nn.ReLU(),
             nn.Dropout(0.5),
             nn.Linear(1024, 256),
@@ -45,6 +45,7 @@ class BCDNet(nn.Module):
 
     def forward(self, x):
         x = self.feature(x)
+        # This print function is used to check the size of the output of the feature extractor.
         # print(x.size())
         x = x.view(x.size(0), -1)
         x = self.classifier(x)
@@ -53,6 +54,7 @@ class BCDNet(nn.Module):
 
 model = BCDNet()
 
+# This code block is used to test if the model is working correctly or not.
 # test_net = BCDNet()
 # test_input = torch.randn(1, 3, 256, 256)
 # test_output = test_net(test_input)
