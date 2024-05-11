@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import torch
+import time
 from models import BCDNet, resnet
 from tqdm import tqdm
 from modules.optimizer import Adam, SGD
@@ -70,6 +71,9 @@ def main(epochs, optimizer_type, lr, scheduler_type, model_type):
     loss_values = []
     acc_values = []
 
+    # record the start time
+    start_time = time.time()
+
     for epoch in range(num_epochs):
         net.train()
         loop = tqdm(train_loader, total=len(train_loader), dynamic_ncols=True)
@@ -114,12 +118,16 @@ def main(epochs, optimizer_type, lr, scheduler_type, model_type):
             # Save the best model
             if accuracy > best_acc:
                 best_acc = accuracy
-                torch.save(net.state_dict(), os.path.join('checkpoints', f'{model_type}.pth'))
+                torch.save(net.state_dict(), os.path.join('./checkpoints', f'{model_type}.pth'))
 
+    # Record the end time
+    end_time = time.time()
+    print(f'Training time: {end_time - start_time:.2f}s')
+    
     # Plot the loss and accuracy values
     plot_loss_accuracy(loss_values, acc_values, model_type)
 
 
 # Call the main function
 if __name__ == '__main__':
-    main(100, 'Adam', 0.0003, 'StepLR', 'resnet')
+    main(100, 'Adam', 0.0003, 'StepLR', 'BCDNet')
