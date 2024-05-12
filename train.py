@@ -28,10 +28,10 @@ train_set, val_set, test_set = data_loader.split(dataset)
 os.makedirs('./checkpoints', exist_ok=True)
 
 # Define the main function
-def main(epochs, optimizer_type, lr, scheduler_type, model_type):
+def main(epochs, batch_size, optimizer_type, lr, scheduler_type, model_type):
     # Create the TrainLoader and ValLoader
-    train_loader = TrainLoader(train_set, batch_size=128, shuffle=True, num_workers=4)
-    val_loader = ValLoader(val_set, batch_size=128, shuffle=False, num_workers=4)
+    train_loader = TrainLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=32)
+    val_loader = ValLoader(val_set, batch_size=batch_size, shuffle=False, num_workers=32)
 
     # Create the model
     if model_type == 'BCDNet':
@@ -130,4 +130,4 @@ def main(epochs, optimizer_type, lr, scheduler_type, model_type):
 
 # Call the main function
 if __name__ == '__main__':
-    main(100, 'Adam', 0.0005, 'StepLR', 'BCDNet')
+    main(100, 256, 'Adam', 0.0005, 'StepLR', 'BCDNet')
