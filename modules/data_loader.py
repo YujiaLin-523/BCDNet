@@ -8,7 +8,7 @@ from torchvision.transforms import transforms
 transformation = transforms.Compose([transforms.ToTensor(),
                                      transforms.Normalize((0, 0, 0), (1, 1, 1)),
                                      transforms.RandomHorizontalFlip(), transforms.RandomVerticalFlip(),
-                                     transforms.RandomRotation(30), transforms.Resize((256, 256))])
+                                     transforms.RandomRotation(30), transforms.Resize((224, 224))])
 
 
 # Define the dataset class

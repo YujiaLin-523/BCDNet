@@ -2,7 +2,7 @@ import os
 import numpy as np
 import torch
 import time
-from models import BCDNet, resnet
+from models import BCDNet, resnet, ViT
 from tqdm import tqdm
 from modules.optimizer import Adam, SGD
 from modules.scheduler import StepLR, CosineAnnealingLR
@@ -38,6 +38,10 @@ def main(epochs, batch_size, optimizer_type, lr, scheduler_type, model_type):
         net = BCDNet.model
     elif model_type == 'resnet':
         net = resnet.model
+    elif model_type == 'ViT':
+        net = ViT.model
+    else:
+        raise ValueError(f'Invalid model {model_type}')
 
     net.to(device)
     if torch.cuda.device_count() > 1:
@@ -130,4 +134,4 @@ def main(epochs, batch_size, optimizer_type, lr, scheduler_type, model_type):
 
 # Call the main function
 if __name__ == '__main__':
-    main(100, 256, 'Adam', 0.0005, 'StepLR', 'resnet')
+    main(100, 256, 'Adam', 0.0005, 'StepLR', 'ViT')
