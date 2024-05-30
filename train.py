@@ -134,4 +134,4 @@ def main(epochs, batch_size, optimizer_type, lr, scheduler_type, model_type):
 
 # Call the main function
 if __name__ == '__main__':
-    main(100, 256, 'Adam', 0.0005, 'StepLR', 'ViT')
+    main(100, 256, 'Adam', 0.0005, 'StepLR', 'BCDNet')

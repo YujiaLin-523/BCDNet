@@ -31,7 +31,7 @@ class BCDNet(nn.Module):
 
         self.classifier = nn.Sequential(
             nn.Dropout(0.5),
-            nn.Linear(1 * 256 * 4 * 4, 1024),
+            nn.Linear(1 * 256 * 3 * 3, 1024),
             nn.ReLU(),
             nn.Dropout(0.5),
             nn.Linear(1024, 256),
@@ -56,6 +56,6 @@ model = BCDNet()
 
 # This code block is used to test if the model is working correctly or not.
 # test_net = BCDNet()
-# test_input = torch.randn(1, 3, 256, 256)
+# test_input = torch.randn(1, 3, 224, 224)
 # test_output = test_net(test_input)
 # print(test_output.size())

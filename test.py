@@ -3,7 +3,7 @@ import torch
 from tqdm import tqdm
 from modules import data_loader
 from modules.data_loader import TestLoader, BCDDataset, transformation
-from models import BCDNet, resnet
+from models import BCDNet, resnet, ViT
 
 
 # Fix random seeds for reproducibility
@@ -23,6 +23,8 @@ def test(batch_size, model_type):
         net = BCDNet.model
     elif model_type == 'resnet':
         net = resnet.model
+    elif model_type == 'ViT':
+        net = ViT.model
     if torch.cuda.device_count() > 1:
         net = torch.nn.DataParallel(net)
     net.to(device)
@@ -55,3 +57,9 @@ def test(batch_size, model_type):
             correct += (predicted == labels).sum().item()
             accuracy = 100 * correct / total
             loop.set_description(f'Accuracy: {accuracy:.2f}%')
+
+
+if __name__ == '__main__':
+    test(batch_size=256, model_type='BCDNet')
+    test(batch_size=256, model_type='resnet')
+    test(batch_size=256, model_type='ViT')
