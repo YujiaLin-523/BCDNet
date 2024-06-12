@@ -28,3 +28,10 @@ To test the model, you can use
 ```
 python test.py
 ```
+Our test results are as follows:   
+BCDNet:
+![](https://github.com/404-UnknownUsername/BCDNet/blob/main/logs/BCDNet.png)
+ResNet 50:
+![](https://github.com/404-UnknownUsername/BCDNet/blob/main/logs/resnet.png)
+ViT-B-16:
+![](https://github.com/404-UnknownUsername/BCDNet/blob/main/logs/ViT.png)
