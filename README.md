@@ -1,20 +1,12 @@
 # BCDNet
 
 ## Introduction
-Invasive Ductal Carcinoma (IDC) is the most common subtype of all breast cancers. To assign an aggressiveness grade to a whole mount sample, pathologists typically focus on the 
-regions which contain the IDC. As a result, one of the common pre-processing steps for automatic aggressiveness grading is to delineate the exact regions of IDC instead of a whole 
-mount slide. We proposed a Convolutional Neural Network (CNN) for Breast Cancer Detection (BCDNet), which is capable of assisting the doctors to diagnose this type of cancer by 
-training on a large scale of Breast Histopathology Images.
+Previous research has established that breast cancer is a prevalent cancer type, with Invasive Ductal Carcinoma (IDC) being the most common subtype. The incidence of this dangerous cancer continues to rise, making accurate and rapid diagnosis, particularly in the early stages, critically important. While modern Computer-Aided Diagnosis (CAD) systems can address most cases, medical professionals still face challenges in quickly adapting CAD systems or using them in the field without powerful computing resources. In this paper, we enhance the traditional Convolutional Neural Network (CNN) architecture by integrating Batch Normalization and Dropout layers, tailoring the model to meet the specific demands of IDC detection. Furthermore, we introduce a novel CNN called BCDNet, which effectively detects IDC in histopathological images with an accuracy of up to 89.5% and reduces training time by up to 82.1%.
 
-## Usage
-You can access the code by
+## Install
+Download the code and install the dependencies, for which conda environment is recommended.
 ```
 git clone https://github.com/404-UnknownUsername/BCDNet
-```
-PyTorch and Python(3.8.19) are required, as well as conda environment is recommended to be installed to manage the packages.  
-  
-You can install the dependencies by
-```
 conda create -n bcdnet python==3.8.19
 conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia
 pip install -r requirements.txt
@@ -29,8 +21,7 @@ To train BCDNet on your devices, you can use
 ```
 python train.py
 ```
-Remember to change the `root_dir` in the `train.py` to your own data path. 
-In addition, if you want to train on Windows, you should change the `num_workers` to 0 in the `train.py` file and change `'/'` to `'\\'` in the line 26 of`data_loader.py` file.
+Remember to change the configuration in `train.py` based on your requirements and devices.
 
 ## Test
 To test the model, you can use
