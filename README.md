@@ -1,4 +1,4 @@
-# BCDNet
+# BCDNet： A Convolutional Neural Network For Breast Cancer Detection
 
 ## Introduction
 Previous research has established that breast cancer is a prevalent cancer type, with Invasive Ductal Carcinoma (IDC) being the most common subtype. The incidence of this dangerous cancer continues to rise, making accurate and rapid diagnosis, particularly in the early stages, critically important. While modern Computer-Aided Diagnosis (CAD) systems can address most cases, medical professionals still face challenges in quickly adapting CAD systems or using them in the field without powerful computing resources. In this paper, we enhance the traditional Convolutional Neural Network (CNN) architecture by integrating Batch Normalization and Dropout layers, tailoring the model to meet the specific demands of IDC detection. Furthermore, we introduce a novel CNN called BCDNet, which effectively detects IDC in histopathological images with an accuracy of up to 89.5% and reduces training time by up to 82.1%.
